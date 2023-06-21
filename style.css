@@ -1,0 +1,58 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    height: 700px;
+}
+
+.base {
+    border: solid;
+    width: 400px;
+    height: 600px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+.base > div {
+    border: solid;
+    height: 70px;
+    width: 350px;
+}
+
+.base .display {
+    display: flex;
+    font-size: 50px;
+    align-items: end;
+    justify-content: end;
+    border-radius: 10px;
+}
+
+.base .buttons {
+    height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 70px;
+    height: 70px;
+}
+
+.one button {
+    height: 40px;
+}
