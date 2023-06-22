@@ -4,14 +4,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1000px;
-    height: 700px;
+    flex: auto;
+    min-height: 800px;
 }
 
 .base {
     border: solid;
     width: 400px;
     height: 600px;
+    background-color: rgba(0, 255, 255, 0.316);
     
     display: flex;
     flex-direction: column;
@@ -22,12 +23,14 @@ body {
 }
 
 .base > div {
-    border: solid;
     height: 70px;
     width: 350px;
 }
 
 .base .display {
+    border: solid;
+    background-color: rgb(219, 216, 216);
+
     display: flex;
     font-size: 50px;
     align-items: end;
@@ -51,6 +54,9 @@ body {
 button {
     width: 70px;
     height: 70px;
+    border-radius: 10px;
+    font-size: 25px;
+    background-color: rgb(227, 227, 227);
 }
 
 .one button {
