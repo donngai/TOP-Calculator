@@ -2,6 +2,7 @@
 let op = "", previousOp = "";
 let first =  "", second = "";
 let negFirst = false; negSecond = false;
+let decFirst = false; decSecond = false;
 let getFirst = true;
 const display = document.querySelector(".display");
 
@@ -52,6 +53,10 @@ function reset() {
     getFirst = true;
     first = "";
     second = "";
+    negFirst = false;
+    negSecond = false;
+    decFirst = false;
+    decSecond = false;
     previousOp.setAttribute("style", "background-color:  rgb(227, 227, 227);");
 }
 
@@ -59,6 +64,8 @@ function reset() {
 function keepOperating() {
     getFirst = false;
     second = "";
+    negSecond = false;
+    decSecond = false;
     previousOp.setAttribute("style", "background-color:  rgb(227, 227, 227);");
 }
 
@@ -129,12 +136,18 @@ results.forEach((result) => {
                     first = first.slice(0, first.length - 1);
                     display.textContent = first;
                 }
+
+                if (!first.includes("."))
+                    decFirst = false;
             }
             else if (!getFirst) {
                 if (second != "" || parseFloat(second) != 0) {
                     second = second.slice(0, second.length - 1);
                     display.textContent = second;
                 }
+
+                if (!second.includes(".")) 
+                    decSecond = false;
             }
             else {
                 reset();
@@ -168,6 +181,22 @@ results.forEach((result) => {
 
                     display.textContent = second;
                 }   
+            }
+        }
+        else if (result.textContent === ".") {
+            if (getFirst) {
+                if (!decFirst) {
+                    first += ".";
+                    decFirst = true;
+                    display.textContent = first;
+                }
+            }
+            else {
+                if (!decSecond) {
+                    second += ".";
+                    decSecond = true;
+                    display.textContent = second;
+                }
             }
         }
     });
