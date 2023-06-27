@@ -1,7 +1,7 @@
 //Variables
-let first = "";
 let op = "", previousOp = "";
-let second = "";
+let first =  "", second = "";
+let negFirst = false; negSecond = false;
 let getFirst = true;
 const display = document.querySelector(".display");
 
@@ -73,14 +73,18 @@ nums.forEach((num) => {
             if (parseFloat(first) === 0)
                 first = "";
 
-            first += num.textContent;
+            if (first.length < 10)
+                first += num.textContent;
+
             display.textContent = first;
         }
         else {
             if (parseFloat(second) === 0)
                 second = "";
 
-            second += num.textContent;
+            if (second.length < 10)
+                second += num.textContent;
+
             display.textContent = second;
         }
     });
@@ -126,12 +130,45 @@ results.forEach((result) => {
                     display.textContent = first;
                 }
             }
-            else {
+            else if (!getFirst) {
                 if (second != "" || parseFloat(second) != 0) {
                     second = second.slice(0, second.length - 1);
                     display.textContent = second;
                 }
             }
+            else {
+                reset();
+            }
         }
-    })
-})
+        else if (result.textContent === "+/-") {
+            if (getFirst) {
+                if (first.length > 0 && parseFloat(first) != 0) {
+                    if (!negFirst) {
+                        first = "-" + first;
+                        negFirst = true;
+                    }
+                    else {
+                        first = first.slice(1);
+                        negFirst = false;
+                    }
+
+                    display.textContent = first;
+                }
+            }
+            else {
+                if (second.length > 0 && parseFloat(second) != 0) {
+                    if (!negSecond) {
+                        second = "-" + second;
+                        negSecond = true;
+                    }
+                    else {
+                        second = second.slice(1);
+                        negSecond = false;
+                    }
+
+                    display.textContent = second;
+                }   
+            }
+        }
+    });
+});
